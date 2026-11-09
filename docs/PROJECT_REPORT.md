@@ -106,6 +106,22 @@ Every metric in this table is directly reproducible by executing `python evaluat
 
 ---
 
+
+
+### 3.5 Representative Test Case Breakdown from Benchmark
+To provide transparency into the 30-case evaluation set, the table below highlights representative benchmark examples across all operational categories:
+
+| Case ID | Category | Question (Input) | Expected Tools | Evaluation Metric & Target |
+| :--- | :--- | :--- | :--- | :--- |
+| `TC-01` | RAG | ปลาทะเลไทยชนิดไหนเหมาะทำเมนูฟิชแอนด์ชิป (Fish & Chips) และเพราะอะไร? | `search_knowledge_base` | Recall@1 (`chk_001` ปลากะมงพร้าว มีมันใต้หนังเกล็ดบางฟูกรอบ) |
+| `TC-02` | RAG | ทำไมปลาเก๋าดอกดำและปลาเก๋าเพลิงถึงไม่เหมาะกับเมนูทอด และควรทำเมนูอะไรแทน? | `search_knowledge_base` | Recall@1 (`chk_004` หนังหนาเหนียวเมื่อโดนน้ำมัน แนะนำนึ่ง/ต้มยำ) |
+| `TC-03` | RAG | อยากหาปลาทะเลให้เด็กและคนแก่ทาน ควรเลือกปลาชนิดไหนที่เนื้อนิ่มเคี้ยวง่ายและก้างน้อย? | `search_knowledge_base` | Recall@1 (`chk_008` ปลาเหลืองญี่ปุ่น เนื้อนุ่มก้างน้อย) |
+| `TC-11` | SQL | ปลาชนิดใดบ้างที่มีราคาต่อแพคเกิน 400 บาท และมีสต็อกคงเหลือเท่าไหร่? | `query_database` | Execution Match (`SELECT name, price, stock_quantity ...`) |
+| `TC-15` | SQL | มูลค่าสต็อกสินค้าคงเหลือทั้งหมดในคลัง (ราคา x จำนวนสต็อก) รวมเป็นเงินกี่บาท? | `query_database` | Execution Match (`SELECT SUM(price * stock_quantity) ...`) |
+| `TC-18` | SQL | ออเดอร์รหัส ORD-1002 จัดส่งด้วยรถควบคุมอุณหภูมิรหัสพัสดุอะไร และสถานะคืออะไร? | `get_order_status` | Status Match (`COOL-9912`, Status: `shipped`) |
+| `TC-21` | Multi-Hop | ปลาแชกำเกรดซาชิมิราคาแพคละกี่บาท มีสต็อกเท่าไหร่ และเนื้อปลาตอนกินดิบเป็นอย่างไร? | Both (`RAG` + `SQL`) | Compound Multi-Hop Verification (Price, Stock, Texture) |
+| `TC-26` | Chit-Chat | สวัสดีครับ มีคำแนะนำสำหรับการเลือกซื้อปลาวันนี้ไหมครับ | None (`Direct Reply`) | Zero-retrieval verification (Skipped factual lookup) |
+
 ## 4. Failure Case Analysis & Engineering Defenses
 
 ### 4.1 Failure Case 1: Unspaced Thai Compound & Synonym Mismatch (`TC-03`)
