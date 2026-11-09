@@ -13,8 +13,8 @@ from src.database import get_db_connection
 from eval.evaluate import run_evaluation
 
 app = FastAPI(
-    title="OmniTech Support AI",
-    description="End-to-end Capstone LLM application with Agentic RAG, Text-to-SQL, and Quantitative Evaluation",
+    title="CatEatFish AI — ปลาทะเลไทยที่กินได้",
+    description="End-to-end Capstone LLM application for Thai Edible Sea Fish (cateatfish.co/sea/thai-fish) with Agentic Hybrid RAG, Guarded Text-to-SQL, and Quantitative Evaluation",
     version="1.0.0"
 )
 
@@ -99,34 +99,34 @@ def trigger_evaluation():
 def get_sample_queries():
     return [
         {
-            "category": "RAG (นโยบายร้าน)",
-            "query": "เงื่อนไขการคืนสินค้าที่เปิดกล่องแล้วเป็นอย่างไร และมีค่า Restocking Fee หรือไม่?",
-            "desc": "ทดสอบการค้นหาเอกสารนโยบายและการสร้าง Citation อ้างอิง"
+            "category": "RAG (แนะนำปลาทำอาหาร)",
+            "query": "ปลาทะเลไทยชนิดไหนเหมาะนำมาทำเมนูฟิชแอนด์ชิป (Fish & Chips) และเพราะอะไร?",
+            "desc": "ทดสอบการค้นหาคลังความรู้ปลาทะเลไทยและแสดง Citation อ้างอิง"
         },
         {
-            "category": "RAG (แก้ปัญหาเทคนิค)",
-            "query": "วิธีรีเซ็ตหูฟัง AeroPulse ANC-X เป็นค่าโรงงานหากหูฟังดับไปข้างหนึ่งทำอย่างไร?",
-            "desc": "ทดสอบการดึงขั้นตอน Troubleshooting จากคู่มือฮาร์ดแวร์"
+            "category": "RAG (ข้อควรระวังในการปรุง)",
+            "query": "ทำไมปลาเก๋าดอกดำและปลาเก๋าเพลิงถึงไม่เหมาะกับเมนูทอด และควรทำเมนูอะไรแทน?",
+            "desc": "ทดสอบการดึงข้อมูลลักษณะเนื้อปลาและหนังปลาจากคู่มือปลาเก๋า"
         },
         {
-            "category": "SQL (คำนวณฐานข้อมูล)",
-            "query": "มีออเดอร์ที่กำลัง processing กี่รายการ และสินค้าใดบ้างที่สต็อกเหลือน้อยกว่า 10 ชิ้น?",
-            "desc": "ทดสอบ Guarded SQL และการคำนวณแม่นยำจากฐานข้อมูล"
+            "category": "RAG (ปลาสำหรับเด็ก/ผู้สูงอายุ)",
+            "query": "อยากหาปลาทะเลเนื้อนิ่ม ก้างน้อย เคี้ยวง่าย สำหรับเด็กและผู้สูงอายุ ควรเลือกปลาอะไร?",
+            "desc": "ทดสอบ Semantic Search จับคู่คำถามกับปลาเหลืองญี่ปุ่นและปลาอังเกย"
         },
         {
-            "category": "SQL (ค้นหาออเดอร์)",
-            "query": "เลขพัสดุและชื่อลูกค้าของคำสั่งซื้อ ORD-1001 คือใครและสถานะเป็นอย่างไร?",
-            "desc": "ทดสอบการดึงข้อมูลเฉพาะเจาะจงด้วย SQL"
+            "category": "SQL (เช็คสต็อกและราคาปลา)",
+            "query": "มีออเดอร์ที่กำลัง processing กี่รายการ และปลาชนิดใดบ้างที่สต็อกเหลือน้อยกว่า 15 แพค?",
+            "desc": "ทดสอบ Guarded Text-to-SQL คำนวณจำนวนออเดอร์และสต็อกปลา"
         },
         {
             "category": "ผสมผสาน (RAG + SQL)",
-            "query": "ลูกค้าในออเดอร์ ORD-1002 ยังสามารถขอคืนสินค้าตามนโยบายรับประกันความพึงพอใจได้ไหม?",
-            "desc": "Multi-hop: ดึงประวัติวันส่งมอบจาก DB แล้วเทียบกับนโยบาย 30 วัน"
+            "query": "ปลาแชกำเกรดซาชิมิราคาแพคละกี่บาท มีสต็อกเท่าไหร่ และเนื้อปลาตอนกินดิบเป็นอย่างไร?",
+            "desc": "Multi-hop: ค้นหาราคา/สต็อกจาก SQLite ผสานกับข้อมูลเนื้อปลาจาก RAG"
         },
         {
-            "category": "สนทนาทั่วไป (ไม่ยิง Tool)",
-            "query": "สวัสดีครับ ขอบคุณสำหรับความช่วยเหลือมากๆ นะครับ",
-            "desc": "ทดสอบการตัดสินใจของ Agent: ตอบทักทายตรงโดยไม่เปลือง Token ค้นหา"
+            "category": "ประมงพื้นบ้านพังงา",
+            "query": "ชาวประมงพื้นบ้านและชาวมอแกลนที่บ้านน้ำเค็ม จ.พังงา ใช้เครื่องมืออะไรจับปลาอย่างยั่งยืน?",
+            "desc": "ทดสอบการค้นหาที่มาของวัตถุดิบและวิถีประมงพื้นบ้านจาก cateatfish.co"
         }
     ]
 

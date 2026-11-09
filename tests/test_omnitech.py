@@ -54,17 +54,17 @@ class TestOmniTechCapstone(unittest.TestCase):
         rag = get_rag_system()
         self.assertGreaterEqual(len(rag.chunks), 15)
 
-        # Hybrid search returns hits with citation
-        hits = rag.search_hybrid("warranty policy for battery", top_k=3)
+        # Hybrid search returns hits with citation for Thai sea fish query
+        hits = rag.search_hybrid("ปลากะมงพร้าว ฟิชแอนด์ชิป", top_k=3)
         self.assertGreater(len(hits), 0)
-        self.assertTrue(any("warranty" in h["citation"].lower() for h in hits))
+        self.assertTrue(any("trevally_and_pompano.md" in h["citation"].lower() for h in hits))
 
     def test_tool_dispatch_defensive(self):
         tools = get_tool_definitions()
         self.assertEqual(len(tools), 3)
 
         # Dispatch search
-        res = dispatch_tool("search_knowledge_base", '{"query": "30-day money back guarantee"}')
+        res = dispatch_tool("search_knowledge_base", '{"query": "ปลาเหลืองญี่ปุ่น เด็ก ผู้สูงอายุ"}')
         self.assertTrue(res["success"])
         self.assertIn("citations", res)
 

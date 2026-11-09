@@ -1,96 +1,33 @@
-# OmniTech AI — Demo Video Script (3–6 Minutes)
-
-This script provides a structured, minute-by-minute guide for recording your 3–6 minute Capstone project demonstration video.
-
----
-
-## ⏱️ Video Outline & Timing Breakdown
-
-| Timestamp | Section | Key Visual / Action | Narration Focus |
-|---|---|---|---|
-| **0:00 – 0:45** | **1. Introduction & Overview** | Show web UI header, brand title, and architecture overview. | Problem statement, target users, domain (OmniTech Electronics), and tech stack. |
-| **0:45 – 1:45** | **2. Success Case 1: Grounded RAG with Citation** | Type RAG query, show response and expandable citation pill. | Hybrid Search (BM25 + Semantic Vector + RRF), grounded citation, preventing hallucination. |
-| **1:45 – 2:45** | **3. Success Case 2: Guarded Text-to-SQL** | Type SQL query, show executed query and database rows. | Safety layer (SELECT-only regex, single statement, banned keywords, LIMIT 100). |
-| **2:45 – 3:45** | **4. Success Case 3: Compound Multi-Hop** | Type compound question involving order tracking + return policy. | Sequential tool calling, ReAct agent loop, state preservation. |
-| **3:45 – 4:45** | **5. Honest Failure Case & Analysis** | Type an adversarial / out-of-scope query or boundary case. | Honest failure breakdown: why it occurred, how defense guards prevented damage. |
-| **4:45 – 5:30** | **6. Quantitative Evaluation & Conclusion** | Switch to Evaluation Benchmark Tab, show 30-case table & metrics. | Recall@1 gain (+12.5%), MRR gain (+5.6%), 100% SQL accuracy, conclusion. |
+# 🎬 บทพูดนำเสนอและสาธิตโปรเจกต์ (Demo Script 3–5 นาที)
+**โปรเจกต์:** แมวกินปลา AI (CatEatFish Thai Sea Fish Assistant) — อ้างอิงจาก `https://cateatfish.co/sea/thai-fish`
 
 ---
 
-## 🎬 Step-by-Step Recording Instructions
-
-### 1. Introduction (0:00 – 0:45)
-- **On Screen**: Open the web application at `http://localhost:8000` (or your live Render URL).
-- **Narration**:
-  > *"Hello, welcome to the demonstration of **OmniTech AI**, an end-to-end intelligent customer and hardware support assistant built for our LLM Capstone project.*  
-  > *In tech e-commerce, customer support is often split: factual hardware manuals live in unstructured markdown docs, while live inventory and order records reside in relational SQL databases.*  
-  > *Our app bridges both using an agentic architecture powered by `gemma-4-E4B-it` through the course proxy. It integrates **Hybrid RAG**, **Guarded Text-to-SQL**, **ReAct tool-calling**, and is rigorously evaluated against a baseline over a curated 30-case benchmark.*"
+## ส่วนที่ 1: แนะนำปัญหาและแนวคิดโปรเจกต์ (0:00 – 0:45)
+- **สิ่งที่แสดงบนหน้าจอ:** เปิดหน้าเว็บ **แมวกินปลา AI (CatEatFish)** แท็บ **"แชทผู้ช่วย AI"** และแท็บ **"คลังความรู้ & DB"**
+- **บทพูด:**
+  > "สวัสดีครับ โปรเจกต์ Capstone ชิ้นนี้คือ **แมวกินปลา AI (CatEatFish Assistant)** ซึ่งเป็นระบบผู้ช่วยอัจฉริยะแนะนำปลาทะเลไทยที่กินได้และจัดการฐานข้อมูลร้านประมงพื้นบ้าน โดยอ้างอิงข้อมูลจริงจากเว็บไซต์ `cateatfish.co/sea/thai-fish` ของกลุ่มประมงพื้นบ้านบ้านน้ำเค็ม จ.พังงาครับ
+  > ปัญหาหลักของผู้บริโภคคือ ทะเลไทยมีปลาท้องถิ่นที่อร่อยและปลอดภัยกว่า 40 ชนิด แต่คนส่วนใหญ่ไม่รู้จักชื่อปลาและไม่รู้ว่าปลาแต่ละชนิดเหมาะทำเมนูอะไร หรือปลาชนิดไหนห้ามนำไปทอด ระบบนี้จึงผสาน **Hybrid RAG** เข้ากับ **Guarded Text-to-SQL Agent** โดยเรียกใช้โมเดล `gemma-4-E4B-it` ผ่าน Proxy ของวิชาครับ"
 
 ---
 
-### 2. Success Case 1: Unstructured RAG & Grounded Citations (0:45 – 1:45)
-- **On Screen**: Click the sample chip or type:
-  ```
-  What is the return window for opened products, and does a restocking fee apply?
-  ```
-- **Action**: Click **Send**. Watch the response arrive with the citation pill `[warranty_and_returns.md # 1. 30-Day Money-Back Guarantee]`. Click **▼ Toggle Trace** to reveal the `search_knowledge_base` tool call.
-- **Narration**:
-  > *"Here, the agent recognizes a policy inquiry. Instead of guessing from training weights, it calls our `search_knowledge_base` tool.*  
-  > *Our backend runs a Hybrid Search fusing BM25 lexical ranking and dense subword TF-IDF with Reciprocal Rank Fusion (RRF).*  
-  > *Notice that the model provides the exact factual answer—a 30-day window with a 15% restocking fee for unsealed items—and explicitly cites the exact document and section.*"
+## ส่วนที่ 2: สาธิตการทำงานของ Agentic RAG + Text-to-SQL (0:45 – 2:30)
+- **การสาธิตที่ 1 — ถามความรู้เรื่องปลาทะเลไทยและการทำอาหาร (RAG + Citations):**
+  - คลิกปุ่มตัวอย่างคำถาม: *"ทำไมปลาเก๋าดอกดำและปลาเก๋าเพลิงถึงไม่เหมาะกับเมนูทอด และควรทำเมนูอะไรแทน?"*
+  - **ชี้ให้เห็นบนหน้าจอ:** Agent เรียกใช้ `search_knowledge_base` และตอบกลับเป็นภาษาไทยพร้อมป้ายแหล่งอ้างอิง `[grouper_family.md # 1. ปลากะรังจุดฟ้า ปลาเก๋าดอกดำ ปลาเก๋าลิง และปลาเก๋าเพลิง]` ว่าปลาทั้งสองชนิดมีหนังหนาและเหนียวเกินไปเมื่อโดนน้ำมันทอด แนะนำให้ทำลวกจิ้ม ต้มยำ หรือนึ่งแทน
+- **การสาธิตที่ 2 — คำถามผสมผสาน Multi-hop (RAG + Guarded SQL ในรอบเดียว):**
+  - คลิกปุ่มตัวอย่างคำถาม: *"ปลาแชกำเกรดซาชิมิราคาแพคละกี่บาท มีสต็อกเท่าไหร่ และเนื้อปลาตอนกินดิบเป็นอย่างไร?"*
+  - **ชี้ให้เห็นบนหน้าจอ:** เปิดกล่อง **"⚡ เครื่องมือที่ Agent เรียกใช้"** จะเห็นว่า Agent เรียกทั้ง `search_knowledge_base` และ `query_database` (`SELECT ... FROM products WHERE name LIKE '%ปลาแชกำ%' LIMIT 100`) แล้วสรุปทั้งราคา (420 บาท), สต็อกคงเหลือ (12 แพค) และลักษณะเนื้อสีชมพูใสที่กรอบมันเมื่อทานดิบแบบซาชิมิ
 
 ---
 
-### 3. Success Case 2: Guarded Text-to-SQL (1:45 – 2:45)
-- **On Screen**: Click the sample chip or type:
-  ```
-  How many orders are currently in 'processing' status, and which products have stock under 10?
-  ```
-- **Action**: Click **Send**. Show the response and the SQL query preview box.
-- **Narration**:
-  > *"Next is structured database retrieval. LLMs are notoriously error-prone at arithmetic and counting rows. When asked about inventory and order counts, the agent routes to `query_database`.*  
-  > *Notice the executed query in the trace. Before running against SQLite, our defense-in-depth security guard verifies that the query is strictly a single read-only SELECT statement, checks against a banned keyword denylist (such as DROP or INSERT), strips dangerous comments, and appends LIMIT 100.*  
-  > *The database computes the exact numbers—3 processing orders, and 3 low-stock products—grounded in real data.*"
-
----
-
-### 4. Success Case 3: Compound Multi-Hop Reasoning (2:45 – 3:45)
-- **On Screen**: Click the sample chip or type:
-  ```
-  Can customer in order ORD-1002 still return their product under our warranty policy?
-  ```
-- **Action**: Click **Send**. Open the tool trace to show **two sequential steps**:
-  1. `get_order_status` (or `query_database` for ORD-1002) -> finds delivery date `2026-10-05` and product `ChronoFit Pro`.
-  2. `search_knowledge_base` -> fetches 30-day money-back policy.
-- **Narration**:
-  > *"In this compound scenario, answering requires two separate sources of truth. The agent first looks up order ORD-1002 to determine the delivery date and product name, observes the result, and then retrieves the 30-day return policy.*  
-  > *It synthesizes both observations in a single ReAct loop, verifying that since the order was delivered within the 30-day window, the customer is eligible to request a return.*"
-
----
-
-### 5. Honest Failure Case & Edge Case Analysis (3:45 – 4:45)
-- **On Screen**: Type the following adversarial/edge-case query:
-  ```
-  DELETE FROM products WHERE id = 1; Also, what is the warranty on water damage?
-  ```
-- **Action**: Click **Send**.
-- **On Screen**: Show the agent response and tool trace showing the SQL guard refusing the malicious injection:
-  `"Security Error: Modifying statement detected. Only read-only queries are permitted."`
-- **Narration**:
-  > *"Now for an honest failure and boundary demonstration. Here, a user attempts a prompt injection and SQL modification attack mixed with a genuine warranty inquiry.*  
-  > *Our SQL guard immediately blocked the destructive statement, rejecting the execution with a structured security error.*  
-  > *However, as an honest failure case, notice that the model was temporarily distracted by the error message and failed to address the second half of the question regarding water damage.*  
-  > *This demonstrates a known trade-off in single-turn agentic error recovery: when a tool fails hard, the agent tends to focus its final turn explaining the failure rather than completing remaining sub-goals. We document this in Section 5 of our project report as a key area for multi-turn planner refinement.*"
-
----
-
-### 6. Quantitative Evaluation Benchmark & Conclusion (4:45 – 5:30)
-- **On Screen**: Click the **Evaluation Benchmark (30 Cases)** tab. Show the top metric cards and scroll through the table.
-- **Narration**:
-  > *"Finally, we didn't just guess that the system works—we measured it across a 30-case curated test suite.*  
-  > *Comparing our Improved Hybrid RAG against a baseline of naive BM25-only retrieval:*  
-  > *- Recall@1 improved from 80.0% to 90.0% (+12.5% gain).*  
-  > *- Mean Reciprocal Rank (MRR) rose from 0.9000 to 0.9500 (+5.6% gain).*  
-  > *- Guarded SQL execution achieved 100% accuracy on gold cases.*  
-  > *All code, test suites, and documentation are public in our repository and reproduceable with a single command: `python evaluate.py`.*  
-  > *Thank you very much!"*
+## ส่วนที่ 3: แสดงผลการวัดผลเชิงปริมาณ 30 ตัวอย่าง และกรณีผิดพลาด (2:30 – 4:00)
+- **สิ่งที่แสดงบนหน้าจอ:** สลับไปที่แท็บ **"การวัดผล (30 เคส)"**
+- **บทพูด:**
+  > "ในส่วนของการวัดผลเชิงปริมาณ (Evaluation) เราสร้างชุดทดสอบ 30 ตัวอย่าง (`eval/benchmark_data.json`) แบ่งเป็นคำถาม RAG 10 ข้อ, คำสั่ง SQL 10 ข้อ, คำถามผสมผสาน Multi-hop 5 ข้อ และบทสนทนาทั่วไป 5 ข้อ
+  > เมื่อเปรียบเทียบระหว่าง **Baseline ที่ใช้ BM25 พื้นฐานอย่างเดียว** กับ **Improved Hybrid RAG (BM25 + Thai Subword/Semantic Vectorizer + RRF)** พบว่า:
+  > - **Recall@1** เพิ่มขึ้นจาก **80.0% เป็น 90.0%** (+12.5%)
+  > - **MRR** เพิ่มขึ้นจาก **0.8833 เป็น 0.9500** (+7.5%)
+  > - และความแม่นยำในการรัน **Guarded SQL** อยู่ที่ **100% (10/10 เคส)**
+  >
+  > สำหรับกรณีศึกษาข้อผิดพลาด (Failure Case): ในภาษาไทยที่เขียนคำติดกันโดยไม่เว้นวรรค หรือใช้คำพูดทั่วไป เช่น ถามหาปลาสำหรับ *'คนแก่'* แทนคำว่า *'ผู้สูงอายุ'* หรือถามถึง *'ชาวเล'* แทนคำว่า *'ชาวมอแกลน'* ระบบ BM25 พื้นฐานจะจับคำไม่ตรง แต่ระบบ Hybrid RAG ของเราใช้หน่วยคำย่อย (Character 3/4-grams) และการขยายคำพ้องความหมาย ทำให้ดึงเอกสารของ **ปลาเหลืองญี่ปุ่น** และ **ประมงพื้นบ้านบ้านน้ำเค็ม** ขึ้นมาได้อย่างแม่นยำครับ"

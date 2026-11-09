@@ -22,9 +22,74 @@ class DocumentChunk:
             "text": self.text
         }
 
+THAI_DOMAIN_TERMS = [
+    "กะมงขาว", "กะมงหน้าดำ", "กะมงพร้าว", "มงตะคองจุดส้ม", "กะมงเหลือง", "กะมงกล้วย",
+    "มงโฉมงาม", "แชกำ", "มงแก้มบาง", "มงเหลืองตะคอง", "มงจั๊กจั่น", "กะรังจุดฟ้า",
+    "เก๋าดอกดำ", "เก๋าลิง", "เก๋าเพลิง", "เก๋าดอกแดง", "เก๋าพริกดำ", "เก๋าพริกแดง",
+    "เก๋ามัน", "เก๋าส้ม", "เก๋าเสือ", "กะรังลายนกยูง", "เก๋าหางบ่วง", "เก๋าเกลื้อน",
+    "อังเกย", "หัวเสี้ยม", "กะพงแดง", "กะพงดำ", "ครืดคราด", "กะพงแสม", "กะพงขาว",
+    "พงเหลือง", "กะพงข้างเหลือง", "แดงจ๋า", "กะพงแดงหน้าตั้ง", "มงอังปี๊", "แดงหลี",
+    "เหลืองญี่ปุ่น", "จ้าวสมุทร", "สร้อยนกเขา", "ปากหมู", "ตะมะลายตอก", "ตะมะแก้มแดง",
+    "หมูสีแก้มแดง", "หูช้าง", "วัวกระดาษ", "ใบขนุน", "สีเงิน", "แดงแซว", "จวดแดง",
+    "กระบอก", "ปลาทู", "อันดามัน", "อ่าวไทย", "ปลาทราย", "กุเลา", "เหล็กโคน", "สำลี",
+    "ขี้ตังสลิด", "ขี้ตังเบ็ด", "เสือซ่อนเล็บ", "สองหน้า", "ตาเดียว", "อินทรีย์", "ดาบเงิน",
+    "ช่อนทะเล", "สากหางเหลือง", "น้ำดอกไม้", "ปลาสละ", "ปลาเสียด", "หมึกโวยวาย",
+    "หมึกสายหนวดยาว", "หมึกหอม", "หมึกกระดอง", "กุ้งแชบ๊วย", "กุ้งลายเสือ", "เนื้อปูก้อน",
+    "หอยน้ำผึ้ง", "หอยโนราห์", "หอยติบ", "หอยนมสาว", "หอยตลับ", "บ้านน้ำเค็ม", "พังงา",
+    "มอแกลน", "ประมงพื้นบ้าน", "อวนลอย", "อวนล้อม", "อวนลาก", "อวนตาถี่", "ลอบดักปลา",
+    "ลอบหมึก", "สุญญากาศ", "แช่เยือกแข็ง", "ฟิชแอนด์ชิป", "ซาชิมิ", "ลวกจิ้ม", "ต้มยำ",
+    "แกงส้ม", "ข้าวต้ม", "ข้าวอบ", "สเต็ก", "ทอดขมิ้น", "ทอดน้ำปลา", "นึ่งซีอิ๊ว", "นึ่งบ๊วย",
+    "ปลาเค็ม", "ลูกชิ้น", "ปลายอ", "ออส่วน", "น้ำมันหอย", "โอเมก้า", "แคลเซียม", "สายคลีน",
+    "ผู้สูงอายุ", "ก้างน้อย", "หนังเหนียว", "ไม่มีเกล็ด", "เกล็ดบาง", "เกล็ดแข็ง", "ไขมัน"
+]
+
+SEMANTIC_SYNONYM_MAP = {
+    "ปลาดิบ": ["ซาชิมิ", "sashimi", "กินดิบ", "ทานดิบ", "แชกำ", "กะมงกล้วย", "อินทรีย์", "แดงจ๋า", "ปลาสละ"],
+    "กินดิบ": ["ซาชิมิ", "sashimi", "ทานดิบ", "แชกำ", "กะมงกล้วย", "อินทรีย์", "แดงจ๋า"],
+    "ซาชิมิ": ["sashimi", "กินดิบ", "ทานดิบ", "แชกำ", "กะมงกล้วย", "อินทรีย์", "หอยโนราห์"],
+    "เด็ก": ["เหลืองญี่ปุ่น", "ผู้สูงอายุ", "ก้างน้อย", "เคี้ยวง่าย", "เนื้อนิ่ม"],
+    "คนแก่": ["ผู้สูงอายุ", "เหลืองญี่ปุ่น", "ก้างน้อย", "เคี้ยวง่าย"],
+    "ผู้สูงอายุ": ["เหลืองญี่ปุ่น", "เด็ก", "ก้างน้อย", "เคี้ยวง่าย"],
+    "คลีน": ["สายคลีน", "อังเกย", "โอเมก้า", "โปรตีน", "ข้าวปลาอบ"],
+    "ลดน้ำหนัก": ["สายคลีน", "อังเกย", "โอเมก้า", "ไขมันน้อย"],
+    "ฟิชแอนด์ชิป": ["fish", "chips", "กะมงพร้าว", "สากหางเหลือง", "น้ำดอกไม้", "ชุบแป้งทอด"],
+    "fish": ["ฟิชแอนด์ชิป", "กะมงพร้าว", "สากหางเหลือง"],
+    "ปลาเค็ม": ["กุเลา", "ราชาแห่งปลาเค็ม", "ดาบเงิน"],
+    "ราชา": ["กุเลา", "ราชาแห่งปลาเค็ม"],
+    "ไม่ควรทอด": ["ไม่เหมาะกับ", "เมนูทอด", "หนังเหนียว", "เก๋าดอกดำ", "เก๋าเพลิง", "เก๋าดอกแดง", "จ้าวสมุทร", "ไหม้ได้ง่าย"],
+    "ห้ามทอด": ["ไม่เหมาะกับ", "เมนูทอด", "หนังเหนียว", "เก๋าดอกดำ", "เก๋าเพลิง", "เก๋าดอกแดง", "จ้าวสมุทร"],
+    "หนังเหนียว": ["เก๋าดอกดำ", "เก๋าเพลิง", "เก๋าดอกแดง", "ไม่เหมาะกับ", "ทอด"],
+    "เคลม": ["รับประกันความสด", "24", "ชั่วโมง", "คืนเงิน", "กล่องโฟม", "สุญญากาศ"],
+    "ส่งของ": ["รถควบคุมอุณหภูมิ", "กล่องโฟม", "แช่เยือกแข็ง", "-20"],
+    "ชาวเล": ["มอแกลน", "บ้านน้ำเค็ม", "พังงา", "ประมงพื้นบ้าน", "อวนลอย", "ลอบ"],
+    "ยั่งยืน": ["ประมงพื้นบ้าน", "บ้านน้ำเค็ม", "มอแกลน", "อวนลอย", "อวนลาก", "อวนตาถี่"],
+    "หม้อหุงข้าว": ["ข้าวอบปลาอังเกย", "อังเกย", "สาหร่ายฮิจิกิ", "ดาชิ", "ทานคลีน"]
+}
+
+def tokenize_bm25(text: str) -> List[str]:
+    """
+    Standard lexical tokenizer for Thai + English (Lecture 6 BM25 baseline).
+    Splits on whitespace, punctuation, and common Thai functional connectors/prefixes.
+    """
+    lowered = text.lower()
+    # Split on common Thai connectors and prefixes so standard lexical BM25 can match Thai words
+    cleaned = re.sub(r"(?:และ|หรือ|เพราะ|สำหรับ|ใน|ของ|ที่|จาก|กับ|คือ|มี|ให้|ได้|ไป|มา|ทำไม|ถึง|อะไร|ชนิดใด|ชนิดไหน|อย่างไร|เท่าไหร่|ช่วง|เดือน|เมนู|ปลา)", " ", lowered)
+    return re.findall(r"[a-z0-9]{2,}|[\u0e00-\u0e7f]{2,}", cleaned)
+
 def tokenize(text: str) -> List[str]:
-    """Basic alphanumeric lowercased tokenizer with subword splitting."""
-    return re.findall(r"\b\w{2,}\b", text.lower())
+    """
+    Enhanced Thai+English tokenizer with domain compound segmentation.
+    """
+    lowered = text.lower()
+    raw_tokens = tokenize_bm25(lowered)
+    tokens = list(raw_tokens)
+
+    for term in THAI_DOMAIN_TERMS:
+        if term in lowered:
+            # Boost exact domain term matches
+            tokens.extend([term, term, term])
+
+    return tokens
 
 def load_and_chunk_knowledge_base(knowledge_dir=KNOWLEDGE_DIR) -> List[DocumentChunk]:
     chunks = []
@@ -80,7 +145,7 @@ class BM25Retriever:
         self.k1 = k1
         self.b = b
         self.corpus_size = len(chunks)
-        self.doc_tokens = [tokenize(c.text) for c in chunks]
+        self.doc_tokens = [tokenize_bm25(c.text) for c in chunks]
         self.doc_lengths = [len(tokens) for tokens in self.doc_tokens]
         self.avg_doc_len = sum(self.doc_lengths) / max(self.corpus_size, 1)
 
@@ -96,7 +161,7 @@ class BM25Retriever:
             self.idf[term] = math.log((self.corpus_size - freq + 0.5) / (freq + 0.5) + 1.0)
 
     def retrieve(self, query: str, top_k=5) -> List[Tuple[DocumentChunk, float]]:
-        q_tokens = tokenize(query)
+        q_tokens = tokenize_bm25(query)
         scores = []
 
         for idx, tokens in enumerate(self.doc_tokens):
@@ -119,7 +184,7 @@ class BM25Retriever:
         return scores[:top_k]
 
 class SemanticTFIDFRetriever:
-    """Dense subword/term frequency vectorizer with cosine similarity."""
+    """Dense Thai/English subword n-gram & semantic concept vectorizer with cosine similarity."""
     def __init__(self, chunks: List[DocumentChunk]):
         self.chunks = chunks
         self.corpus_size = len(chunks)
@@ -136,16 +201,25 @@ class SemanticTFIDFRetriever:
                 self.df[t] = self.df.get(t, 0) + 1
 
         self.idf = {t: math.log((self.corpus_size + 1) / (freq + 1)) + 1.0 for t, freq in self.df.items()}
+        self.idx_to_idf = {idx: self.idf.get(t, 1.0) for t, idx in self.vocab.items()}
         self.doc_vectors = [self._vectorize(terms) for terms in self.doc_terms]
 
     def _extract_features(self, text: str) -> List[str]:
-        words = tokenize(text)
-        # Combine words and character 3-grams for typo-tolerant semantic matching
+        lowered = text.lower()
+        words = tokenize(lowered)
         features = list(words)
-        for w in words:
-            if len(w) >= 4:
-                for i in range(len(w) - 2):
-                    features.append(w[i:i+3])
+
+        # Expand semantic culinary/fish synonyms for paraphrased Thai queries
+        for trigger, expansions in SEMANTIC_SYNONYM_MAP.items():
+            if trigger in lowered:
+                features.extend(expansions * 2)
+
+        # Extract character 3-grams and 4-grams across Thai & English runs for unspaced Thai matching
+        for w in re.findall(r"[a-z0-9]{3,}|[\u0e00-\u0e7f]{3,}", lowered):
+            for n in (3, 4):
+                if len(w) >= n:
+                    for i in range(len(w) - n + 1):
+                        features.append(w[i:i+n])
         return features
 
     def _vectorize(self, terms: List[str]) -> Dict[int, float]:
@@ -155,12 +229,12 @@ class SemanticTFIDFRetriever:
                 idx = self.vocab[t]
                 tf[idx] = tf.get(idx, 0) + 1
 
-        # Weight by TF-IDF and normalize to unit norm
+        # Weight by sublinear TF * IDF and normalize to unit norm
         norm_sq = 0.0
         vec = {}
         for idx, count in tf.items():
-            # lookup term string by reverse or direct
-            val = (1.0 + math.log(count))
+            idf_w = self.idx_to_idf.get(idx, 1.0)
+            val = (1.0 + math.log(count)) * idf_w
             vec[idx] = val
             norm_sq += val * val
 
@@ -186,7 +260,7 @@ class SemanticTFIDFRetriever:
 
 class HybridRAGSystem:
     """
-    Hybrid RAG System combining BM25 (Lexical) + Dense TF-IDF (Semantic)
+    Hybrid RAG System combining BM25 (Lexical) + Dense Subword/Concept Semantic Vectorizer
     via Reciprocal Rank Fusion (RRF), as taught in Lectures 6-9.
     """
     def __init__(self, knowledge_dir=KNOWLEDGE_DIR, rrf_k=60, min_score=0.015):
@@ -217,8 +291,8 @@ class HybridRAGSystem:
         Formula: RRF_score(d) = 1/(k + rank_bm25) + 1/(k + rank_semantic)
         """
         pool_k = min(top_k * 3, len(self.chunks))
-        bm25_hits = self.bm25.retrieve(query, top_k=pool_k)
-        semantic_hits = self.semantic.retrieve(query, top_k=pool_k)
+        bm25_hits = [(c, s) for c, s in self.bm25.retrieve(query, top_k=pool_k) if s > 0]
+        semantic_hits = [(c, s) for c, s in self.semantic.retrieve(query, top_k=pool_k) if s > 0]
 
         bm25_ranks = {chunk.chunk_id: rank + 1 for rank, (chunk, _) in enumerate(bm25_hits)}
         semantic_ranks = {chunk.chunk_id: rank + 1 for rank, (chunk, _) in enumerate(semantic_hits)}

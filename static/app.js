@@ -211,10 +211,10 @@ function appendAssistantMessage(data) {
   }
 
   msgEl.innerHTML = `
-    <div class="msg-avatar">AI</div>
+    <div class="msg-avatar">🐟</div>
     <div class="msg-bubble">
       <div class="msg-header">
-        <span class="msg-author">OmniTech Support AI</span>
+        <span class="msg-author">แมวกินปลา AI (CatEatFish)</span>
         <span class="msg-badge">${data.latency_ms} ms • ${data.steps} รอบการทำงาน</span>
       </div>
       <div class="msg-text">${formatMarkdown(data.reply)}</div>
@@ -349,24 +349,24 @@ async function loadDataInspector() {
   const docsList = document.getElementById("docs-list");
   docsList.innerHTML = `
     <div class="doc-card">
-      <div class="doc-name">warranty_and_returns.md</div>
-      <div class="doc-meta">รับประกันคืนเงิน 30 วัน, ค่าธรรมเนียม Restocking 15%, รับประกันฮาร์ดแวร์ 1 ปี, เงื่อนไขแบตเตอรี่ 6 เดือน</div>
+      <div class="doc-name">trevally_and_pompano.md</div>
+      <div class="doc-meta">ปลากลุ่มกะมง/โมง/มง: กะมงขาว, กะมงหน้าดำ, กะมงพร้าว (เหมาะทำ Fish &amp; Chips), กะมงกล้วย, มงโฉมงาม, แชกำ (เกรดซาชิมิ), มงแก้มบาง, มงเหลืองตะคอง, มงจั๊กจั่น</div>
     </div>
     <div class="doc-card">
-      <div class="doc-name">shipping_and_delivery.md</div>
-      <div class="doc-meta">จัดส่งในประเทศ 2-4 วัน, ส่งฟรีเมื่อสั่งซื้อเกิน 1,500 บาท, ตัดรอบ 14:00 สำหรับส่งด่วนในวันถัดไป</div>
+      <div class="doc-name">grouper_family.md</div>
+      <div class="doc-meta">ปลาเก๋าและปลากะรัง 13 ชนิด: กะรังจุดฟ้า, เก๋าดอกดำ/เก๋าเพลิง/เก๋าดอกแดง (หนังเหนียวไม่เหมาะทอด), เก๋าลิง, เก๋าพริกแดง, เก๋ามัน, เก๋าเสือ, เก๋าหางบ่วง</div>
     </div>
     <div class="doc-card">
-      <div class="doc-name">troubleshooting_audio.md</div>
-      <div class="doc-meta">หูฟัง AeroPulse ANC-X ไดรเวอร์ 40mm, ระบบตัดเสียงรบกวน, บลูทูธ 5.3 Multipoint, วิธีรีเซ็ต 8 วินาที</div>
+      <div class="doc-name">snapper_and_emperor.md</div>
+      <div class="doc-meta">กลุ่มกะพงและปลาชื่อไม่คุ้นน่าลอง: ปลาอังเกย (โอเมก้า 3 สูง), หัวเสี้ยม, กะพงแดง, ปลาเหลืองญี่ปุ่น (เนื้อนิ่มก้างน้อยสำหรับเด็ก/ผู้สูงอายุ), ปลาจ้าวสมุทร, ปลาวัวกระดาษ, ปลาปากหมู</div>
     </div>
     <div class="doc-card">
-      <div class="doc-name">troubleshooting_smartwatch.md</div>
-      <div class="doc-meta">สมาร์ทวอทช์ ChronoFit Pro จอ AMOLED, มาตรฐานกันน้ำ 5ATM, การคาลิเบรตเซนเซอร์หัวใจ PPG</div>
+      <div class="doc-name">small_pelagic_and_shellfish.md</div>
+      <div class="doc-meta">ปลาตัวเล็ก ปลาผิวน้ำ และหมึก-กุ้ง-ปู-หอย: ปลาทูอันดามัน, ปลากุเลา (ราชาแห่งปลาเค็ม), ปลาอินทรีย์, ปลาสากหางเหลือง, หมึกหอม, กุ้งแชบ๊วย, หอยติบ, หอยโนราห์, หอยตลับ</div>
     </div>
     <div class="doc-card">
-      <div class="doc-name">troubleshooting_hardware.md</div>
-      <div class="doc-meta">โน้ตบุ๊ก TitanBook 14 Intel Ultra 7, ปรับโหมดพัดลม Fn+Q, คีย์บอร์ด MechWave RGB สวิตช์ Hot-swap</div>
+      <div class="doc-name">sustainable_fishery_and_recipes.md</div>
+      <div class="doc-meta">วิถีประมงพื้นบ้านและชาวมอแกลน ชุมชนบ้านน้ำเค็ม จ.พังงา, มาตรฐานซีลสุญญากาศแช่แข็ง -20°C, การรับประกันความสด 24 ชม. และสูตรข้าวอบปลาอังเกยหม้อหุงข้าว</div>
     </div>
   `;
 

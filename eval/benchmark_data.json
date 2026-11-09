@@ -1,212 +1,212 @@
 [
   {
     "id": "TC-01",
-    "question": "What is the return window for OmniTech products, and is there any restocking fee for opened items?",
+    "question": "ปลาทะเลไทยชนิดใดเหมาะสำหรับนำมาทำเมนูฟิชแอนด์ชิป (Fish and Chips) เพราะมีมันใต้ชั้นหนังที่เกล็ดบางทำให้ฟูกรอบง่าย?",
     "category": "RAG",
-    "expected_chunks": ["chk_013"],
-    "ground_truth_answer": "30-day money-back guarantee. A 15% restocking fee applies if the product packaging has been unsealed or opened."
+    "expected_chunks": ["chk_013", "chk_012"],
+    "ground_truth_answer": "ปลากะมงพร้าว (Giant Trevally) เพราะมีมันใต้ชั้นหนังที่เกล็ดบางจึงฟูกรอบได้ง่ายเมื่อโดนน้ำมันร้อนๆ รวมถึงปลาสากหางเหลือง (ปลาน้ำดอกไม้)"
   },
   {
     "id": "TC-02",
-    "question": "Does the warranty cover rechargeable batteries, and for how long?",
+    "question": "ทำไมปลาเก๋าดอกดำและปลาเก๋าเพลิงถึงห้ามนำมาทอด และควรนำไปทำเมนูอะไรแทน?",
     "category": "RAG",
-    "expected_chunks": ["chk_014"],
-    "ground_truth_answer": "Rechargeable lithium-ion batteries carry a separate 6-month limited warranty. Normal degradation up to 20% in 1 year is not covered."
+    "expected_chunks": ["chk_001", "chk_012"],
+    "ground_truth_answer": "ไม่เหมาะกับเมนูทอดเพราะหนังเหนียวเกินไป ทานยาก แนะนำให้นำไปทำเมนูลวกจิ้ม ต้มยำ หรือนึ่งแทน"
   },
   {
     "id": "TC-03",
-    "question": "Can I wear the smartwatch in a hot steam sauna or while scuba diving?",
+    "question": "อยากหาปลาทะเลให้เด็กและคนแก่ทาน ควรเลือกปลาชนิดไหนที่เนื้อนิ่มเคี้ยวง่ายและก้างน้อย?",
     "category": "RAG",
-    "expected_chunks": ["chk_010", "chk_014"],
-    "ground_truth_answer": "No. The ChronoFit Pro has a 5ATM rating for shallow swimming only. Hot tubs, saunas, steam, and diving void the warranty immediately."
+    "expected_chunks": ["chk_008", "chk_012"],
+    "ground_truth_answer": "แนะนำปลาเหลืองญี่ปุ่น เพราะเป็นปลาเกล็ดบาง เนื้อนุ่มมาก ก้างน้อย เคี้ยวง่าย รสชาติไม่ซับซ้อน เหมาะทำปลานึ่งซีอิ๊ว ข้าวต้มแห้ง หรือเนื้อปลาลวก"
   },
   {
     "id": "TC-04",
-    "question": "How long does standard domestic shipping take in Thailand, and what is the minimum order for free shipping?",
+    "question": "ปลาจ้าวสมุทรมีลักษณะไขมันช่วงราวท้องเป็นอย่างไร และทำไมถึงไม่ควรนำไปทอด?",
     "category": "RAG",
-    "expected_chunks": ["chk_001"],
-    "ground_truth_answer": "Standard domestic shipping takes 2 to 4 business days. Free for orders exceeding 1,500 THB; flat rate of 60 THB otherwise."
+    "expected_chunks": ["chk_008", "chk_012"],
+    "ground_truth_answer": "ปลาจ้าวสมุทรเป็นปลาเกล็ดแข็ง เนื้อขาวที่มีไขมันสูง ในช่วงราวท้องจะมีไขมันเป็นสีส้ม ไม่เหมาะกับเมนูทอดเพราะไขมันสูงทำให้เนื้อไหม้ได้ง่าย แนะนำทำแกงส้ม ลวกจิ้ม หรือหม้อไฟ"
   },
   {
     "id": "TC-05",
-    "question": "What time is the cutoff for same-day or next-day express delivery in Bangkok?",
+    "question": "ปลาทะเลไทยชนิดใดได้รับฉายาว่าราชาแห่งปลาเค็ม และพบมากในเดือนอะไร?",
     "category": "RAG",
-    "expected_chunks": ["chk_001"],
-    "ground_truth_answer": "Orders placed before 14:00 (2:00 PM) qualify for Express Same-Day/Next-Day delivery in the Bangkok Metropolitan Region for a flat 150 THB fee."
+    "expected_chunks": ["chk_004"],
+    "ground_truth_answer": "ปลากุเลา (Threadfins) ได้รับฉายาว่าราชาแห่งปลาเค็ม พบมากในช่วงเดือนตุลาคม เนื้อนุ่มหวานทำได้ทั้งนึ่ง ทอด ยำ และปลาเค็ม"
   },
   {
     "id": "TC-06",
-    "question": "How do I perform a factory reset on the AeroPulse ANC-X headphones?",
+    "question": "ชาวเลและประมงพื้นบ้านที่บ้านน้ำเค็ม จังหวัดพังงา ใช้เครื่องมืออะไรจับปลาเพื่อความยั่งยืน?",
     "category": "RAG",
-    "expected_chunks": ["chk_006"],
-    "ground_truth_answer": "While headphones are powered on, simultaneously press and hold the Power button and ANC button for 8 seconds until the LED flashes purple 3 times."
+    "expected_chunks": ["chk_010"],
+    "ground_truth_answer": "ชาวประมงพื้นบ้านและชาวมอแกลนที่ชุมชนบ้านน้ำเค็ม จ.พังงา ใช้อวนลอย อวนล้อม ลอบดักปลา และลอบหมึก โดยหลีกเลี่ยงการใช้อวนลากและอวนตาถี่เพื่อไม่ทำลายสัตว์น้ำวัยอ่อน"
   },
   {
     "id": "TC-07",
-    "question": "How many external 4K monitors can the TitanBook 14 laptop connect to simultaneously?",
+    "question": "ปลาทูอันดามันมีลักษณะเนื้อและไขมันต่างจากปลาทูฝั่งอ่าวไทยอย่างไร และพบมากเดือนไหน?",
     "category": "RAG",
-    "expected_chunks": ["chk_008"],
-    "ground_truth_answer": "Up to two 4K 60Hz external monitors simultaneously through Thunderbolt 4 ports, or one 4K 120Hz display via HDMI 2.1."
+    "expected_chunks": ["chk_004"],
+    "ground_truth_answer": "ปลาทูอันดามันเป็นปลาเกล็ดบางขนาดเล็ก เนื้อแน่น และมีมันน้อยกว่าปลาทูฝั่งอ่าวไทย พบมากในช่วงเดือนมีนาคม-เมษายน และเดือนธันวาคม"
   },
   {
     "id": "TC-08",
-    "question": "My laptop gets blazing hot and throttles under heavy load, how do I toggle cooling fan profiles?",
+    "question": "ถ้าต้องการทำข้าวอบปลาสไตล์ญี่ปุ่นด้วยหม้อหุงข้าวสำหรับสายคลีน ควรใช้ปลาอะไรและมีส่วนผสมอะไรบ้าง?",
     "category": "RAG",
-    "expected_chunks": ["chk_007"],
-    "ground_truth_answer": "Press Fn + Q to cycle between Quiet (15W TDP), Balanced (28W TDP), and Extreme Performance (45W TDP) modes, and ensure bottom/rear vents are clear."
+    "expected_chunks": ["chk_012", "chk_007"],
+    "ground_truth_answer": "แนะนำปลาอังเกยแล่เนื้อ เพราะมีโอเมก้า 3 สูง เนื้อขาวละเอียดไม่กระด้าง หุงในหม้อหุงข้าวพร้อมข้าว น้ำซุปดาชิ โชยุ มิริน สาเก เกลือ ถั่วแระ รากบัว แครอท และสาหร่ายฮิจิกิ"
   },
   {
     "id": "TC-09",
-    "question": "Can I replace key switches if a key stops responding on the mechanical keyboard?",
+    "question": "หอยติบคือหอยตระกูลอะไร เก็บได้ช่วงไหน และนิยมนำไปปรุงเมนูใด?",
     "category": "RAG",
-    "expected_chunks": ["chk_009"],
-    "ground_truth_answer": "Yes, switches are hot-swappable. Use the switch puller to gently pull the switch vertically upwards, clean socket contacts, and re-insert straight."
+    "expected_chunks": ["chk_006"],
+    "ground_truth_answer": "หอยติบเป็นหอยตระกูลหอยนางรมขนาดเล็ก เกาะอยู่ตามโขดหิน พบได้ตลอดในช่วงน้ำลง เหมาะสำหรับทำออส่วน ไข่เจียว หรือนำไปเคี่ยวทำซอสน้ำมันหอยติบ"
   },
   {
     "id": "TC-10",
-    "question": "How many business days does it take to receive a refund after the returned package is received at the warehouse?",
+    "question": "การเก็บรักษาปลาของร้านแมวกินปลาแช่แข็งที่อุณหภูมิเท่าไหร่ และถ้ากล่องโฟมแตกต้องแจ้งเคลมภายในกี่ชั่วโมง?",
     "category": "RAG",
-    "expected_chunks": ["chk_015"],
-    "ground_truth_answer": "Refunds are processed within 5 to 7 business days after the package is received and inspected at the central warehouse in Bangkok."
+    "expected_chunks": ["chk_011"],
+    "ground_truth_answer": "บรรจุถุงซีลสุญญากาศและแช่เยือกแข็งที่อุณหภูมิ -20 องศาเซลเซียส จัดส่งด้วยรถควบคุมอุณหภูมิ หากกล่องโฟมชำรุดหรือถุงรั่วซึมต้องแจ้งเคลมพร้อมภาพถ่ายภายใน 24 ชั่วโมงหลังได้รับสินค้า"
   },
   {
     "id": "TC-11",
-    "question": "How many products in total are in the Audio category?",
+    "question": "ในฐานข้อมูลมีสินค้าปลาในหมวด 'กลุ่มปลาเก๋า' ทั้งหมดกี่รายการ?",
     "category": "SQL",
-    "gold_sql": "SELECT COUNT(*) FROM products WHERE category = 'Audio'",
-    "ground_truth_answer": "4"
+    "gold_sql": "SELECT COUNT(*) FROM products WHERE category = 'กลุ่มปลาเก๋า'",
+    "ground_truth_answer": "2 รายการ (ปลากะรังจุดฟ้า ทั้งตัว และ ปลาเก๋าดอกดำ แล่เนื้อหั่นชิ้น)"
   },
   {
     "id": "TC-12",
-    "question": "What is the price and current stock count of the 'OmniTech TitanBook 14'?",
+    "question": "ปลากะรังจุดฟ้า ทั้งตัว มีราคาแพคละกี่บาท และเหลือสต็อกกี่แพค?",
     "category": "SQL",
-    "gold_sql": "SELECT price, stock FROM products WHERE name LIKE '%TitanBook 14%'",
-    "ground_truth_answer": "Price: 38900.0 THB, Stock: 9 units"
+    "gold_sql": "SELECT price, stock FROM products WHERE name LIKE '%ปลากะรังจุดฟ้า%'",
+    "ground_truth_answer": "ราคา 590.0 บาท, สต็อกคงเหลือ 18 แพค"
   },
   {
     "id": "TC-13",
-    "question": "Which products currently have fewer than 10 units in stock?",
+    "question": "สินค้าปลาหรืออาหารทะเลรายการใดบ้างที่มีสต็อกคงเหลือน้อยกว่า 15 แพค?",
     "category": "SQL",
-    "gold_sql": "SELECT name, stock FROM products WHERE stock < 10 ORDER BY stock ASC",
-    "ground_truth_answer": "OmniTech VisionAir 4K Drone (4), OmniTech SonicBuds Wireless (5), OmniTech TitanBook 14 (9)"
+    "gold_sql": "SELECT name, stock FROM products WHERE stock < 15 ORDER BY stock ASC",
+    "ground_truth_answer": "ปลากุเลาอันดามัน ทั้งตัว (8 แพค), ปลาแชกำ แล่เนื้อเกรดซาชิมิ (12 แพค), เนื้อปูก้อนแกะสด บ้านน้ำเค็ม (14 แพค)"
   },
   {
     "id": "TC-14",
-    "question": "What is the status and tracking number of order ORD-1001?",
+    "question": "ตรวจสอบสถานะการจัดส่งและเลขพัสดุของออเดอร์ ORD-1001",
     "category": "SQL",
     "gold_sql": "SELECT status, tracking_number FROM orders WHERE order_id = 'ORD-1001'",
-    "ground_truth_answer": "Status: delivered, Tracking: TH-KRY-882910"
+    "ground_truth_answer": "สถานะ: delivered, เลขพัสดุรถห้องเย็น: COOL-KRY-882910"
   },
   {
     "id": "TC-15",
-    "question": "How many orders are currently in 'processing' status?",
+    "question": "ขณะนี้มีคำสั่งซื้อที่อยู่ในสถานะ 'processing' ทั้งหมดกี่รายการ?",
     "category": "SQL",
     "gold_sql": "SELECT COUNT(*) FROM orders WHERE status = 'processing'",
-    "ground_truth_answer": "3"
+    "ground_truth_answer": "3 รายการ (ORD-1007, ORD-1012, ORD-1014)"
   },
   {
     "id": "TC-16",
-    "question": "What is the total revenue generated from all delivered orders?",
+    "question": "ยอดขายรวมทั้งหมดจากคำสั่งซื้อที่จัดส่งสำเร็จแล้ว (status = 'delivered') เป็นเงินกี่บาท?",
     "category": "SQL",
     "gold_sql": "SELECT SUM(total_price) FROM orders WHERE status = 'delivered'",
-    "ground_truth_answer": "129840.0"
+    "ground_truth_answer": "7420.0 บาท"
   },
   {
     "id": "TC-17",
-    "question": "Who is the customer and what is their email for order ORD-1003?",
+    "question": "ลูกค้าที่สั่งออเดอร์ ORD-1003 ชื่ออะไร และใช้อีเมลอะไร?",
     "category": "SQL",
     "gold_sql": "SELECT customer_name, customer_email FROM orders WHERE order_id = 'ORD-1003'",
     "ground_truth_answer": "Kittipong Chaiyaphum (kittipong@email.com)"
   },
   {
     "id": "TC-18",
-    "question": "Which product has the highest customer rating in the catalog?",
+    "question": "สินค้าในร้านแมวกินปลารายการใดมีราคาถูกที่สุด และราคาแพคละเท่าไหร่?",
     "category": "SQL",
-    "gold_sql": "SELECT name, rating FROM products ORDER BY rating DESC, price DESC LIMIT 1",
-    "ground_truth_answer": "OmniTech TitanBook 14 or OmniTech USB-C Thunderbolt 4 Cable (Rating: 4.9)"
+    "gold_sql": "SELECT name, price FROM products ORDER BY price ASC LIMIT 1",
+    "ground_truth_answer": "ปลาทูอันดามัน ทั้งตัว แพคคู่ (ราคา 150.0 บาท)"
   },
   {
     "id": "TC-19",
-    "question": "How many return requests have been submitted and what is the total refund amount approved or refunded?",
+    "question": "มีรายการเคลมสินค้าที่ได้รับอนุมัติหรือคืนเงินแล้ว ('approved', 'refunded') กี่รายการ และยอดเงินรวมเท่าไหร่?",
     "category": "SQL",
     "gold_sql": "SELECT COUNT(*), SUM(refund_amount) FROM returns WHERE status IN ('approved', 'refunded')",
-    "ground_truth_answer": "4 returns approved/refunded, total amount 47170.0 THB (out of 5 total returns)"
+    "ground_truth_answer": "4 รายการ, ยอดเงินคืนรวม 2610.0 บาท"
   },
   {
     "id": "TC-20",
-    "question": "Which customer bought the highest number of MechWave RGB Keyboards in a single order?",
+    "question": "ลูกค้าคนใดสั่งซื้อ 'ปลาทูอันดามัน' จำนวนแพคมากที่สุดในหนึ่งออเดอร์?",
     "category": "SQL",
-    "gold_sql": "SELECT customer_name, quantity FROM orders WHERE product_id = 4 ORDER BY quantity DESC LIMIT 1",
-    "ground_truth_answer": "Natdanai Siriporn (quantity: 2)"
+    "gold_sql": "SELECT customer_name, quantity FROM orders WHERE product_id = 10 ORDER BY quantity DESC LIMIT 1",
+    "ground_truth_answer": "Siriwan Chokdee (จำนวน 4 แพค)"
   },
   {
     "id": "TC-21",
-    "question": "What is the return policy for defective items within 14 days, and what is the status of return RET-501?",
+    "question": "ตรวจสอบสถานะการเคลม RET-501 และอธิบายเงื่อนไขการรับประกันความสดหากกล่องโฟมชำรุดระหว่างขนส่ง",
     "category": "COMPOUND",
     "expected_tools": ["search_knowledge_base", "query_database"],
-    "ground_truth_answer": "Defective items returned within 14 days receive a pre-paid DHL/Kerry return label. Return RET-501 for order ORD-1011 has been approved."
+    "ground_truth_answer": "RET-501 (จากออเดอร์ ORD-1011) ได้รับการอนุมัติ (approved) คืนเงิน 360 บาท ตามนโยบายรับประกันความสด หากกล่องโฟมชำรุดหรือถุงสุญญากาศรั่วซึม ลูกค้าแจ้งเคลมพร้อมภาพถ่ายภายใน 24 ชั่วโมงเพื่อรับเงินคืนเต็มจำนวน"
   },
   {
     "id": "TC-22",
-    "question": "Check the delivery status of order ORD-1002 and explain whether the buyer can return it if they just changed their mind.",
+    "question": "เช็คสถานะออเดอร์ ORD-1002 ว่าสั่งซื้อปลาอะไร และปลาชนิดนั้นเหมาะนำไปทำเมนูอะไรบ้างตามคู่มือ?",
     "category": "COMPOUND",
     "expected_tools": ["get_order_status", "search_knowledge_base"],
-    "ground_truth_answer": "ORD-1002 was delivered on 2026-10-05. Under the 30-day money-back guarantee, change of mind returns are accepted within 30 days but the customer pays return shipping and a 15% restocking fee if opened."
+    "ground_truth_answer": "ORD-1002 สั่งซื้อปลากะรังจุดฟ้า ทั้งตัว (สถานะ delivered) ซึ่งเป็นปลาเนื้อขาวนุ่มละเอียด เหมาะสำหรับเมนูที่ปรุงรสไม่มาก เช่น ลวก ข้าวต้ม และนึ่ง"
   },
   {
     "id": "TC-23",
-    "question": "How much does the AeroPulse ANC-X cost, how many are in stock, and what audio codecs does it support?",
+    "question": "ปลาแชกำแล่เนื้อเกรดซาชิมิราคาเท่าไหร่ มีสต็อกกี่แพค และลักษณะเนื้อตอนกินดิบกับกินสุกเป็นอย่างไร?",
     "category": "COMPOUND",
     "expected_tools": ["query_database", "search_knowledge_base"],
-    "ground_truth_answer": "Price is 4590.0 THB with 42 units in stock. It supports SBC, AAC, and LDAC audio codecs."
+    "ground_truth_answer": "ราคา 420.0 บาท มีสต็อก 12 แพค เนื้อมีสีชมพูใส ไขมันเยอะ หากกินดิบ (ซาชิมิ) เนื้อจะกรอบมัน หากกินสุกเนื้อจะขาวนุ่มแน่น"
   },
   {
     "id": "TC-24",
-    "question": "What is the warranty period for order ORD-1015, and what thermal management shortcuts are available on that device?",
+    "question": "ตรวจสอบออเดอร์ ORD-1006 ว่าสั่งปลาชนิดใด และทำไมปลาชนิดนี้ถึงไม่ควรนำไปทอด?",
     "category": "COMPOUND",
-    "expected_tools": ["query_database", "search_knowledge_base"],
-    "ground_truth_answer": "ORD-1015 is a TitanBook 14 with a 12-month warranty. Thermal profiles can be toggled using Fn + Q (Quiet, Balanced, Extreme Performance)."
+    "expected_tools": ["get_order_status", "search_knowledge_base"],
+    "ground_truth_answer": "ORD-1006 สั่งซื้อปลาเก๋าดอกดำ แล่เนื้อหั่นชิ้น จำนวน 2 แพค ปลาเก๋าดอกดำไม่เหมาะกับเมนูทอดเพราะหนังหนาและเหนียวเกินไป เหมาะทำลวกจิ้มหรือต้มยำ"
   },
   {
     "id": "TC-25",
-    "question": "Check the status of order ORD-1007 and tell the customer what shipping timeframe to expect once dispatched.",
+    "question": "เช็คสถานะออเดอร์ ORD-1007 และบอกว่าปลากุเลาที่สั่งสามารถเก็บในช่องแช่แข็ง -20°C ได้นานกี่เดือน?",
     "category": "COMPOUND",
     "expected_tools": ["get_order_status", "search_knowledge_base"],
-    "ground_truth_answer": "ORD-1007 is currently 'processing'. Standard domestic shipping in Thailand takes 2 to 4 business days once dispatched."
+    "ground_truth_answer": "ORD-1007 สั่งซื้อปลากุเลาอันดามัน ทั้งตัว ขณะนี้อยู่ในสถานะ processing สามารถเก็บรักษาในตู้แช่แข็ง -20°C ได้นาน 6-12 เดือน"
   },
   {
     "id": "TC-26",
-    "question": "Hello there! Can you help me?",
+    "question": "สวัสดีครับ ช่วยแนะนำหน่อยได้ไหมครับ?",
     "category": "CHITCHAT",
     "expected_tools": [],
-    "ground_truth_answer": "Hello! Welcome to OmniTech Electronics support. How can I help you today?"
+    "ground_truth_answer": "สวัสดีครับ! ยินดีต้อนรับสู่ แมวกินปลา AI ยินดีให้คำแนะนำเรื่องปลาทะเลไทย เมนูอาหาร และตรวจสอบคำสั่งซื้อครับ"
   },
   {
     "id": "TC-27",
-    "question": "Thanks for your great help, that answers everything!",
+    "question": "ขอบคุณมากครับ ได้ความรู้เรื่องปลาไทยเยอะเลย!",
     "category": "CHITCHAT",
     "expected_tools": [],
-    "ground_truth_answer": "You're very welcome! If you have any more questions, feel free to ask. Have a great day!"
+    "ground_truth_answer": "ยินดีมากๆ ครับ! หากต้องการสอบถามเรื่องปลาทะเลไทยหรือเมนูอาหารเพิ่มเติม แจ้งได้ตลอดเลยนะครับ"
   },
   {
     "id": "TC-28",
-    "question": "What is your role here?",
+    "question": "คุณทำหน้าที่อะไรในเว็บนี้ครับ?",
     "category": "CHITCHAT",
     "expected_tools": [],
-    "ground_truth_answer": "I am the OmniTech Support AI assistant. I can answer questions about product specs, policies, and order statuses."
+    "ground_truth_answer": "ผมคือผู้ช่วย AI ของร้านแมวกินปลา (CAT EAT FISH) ทำหน้าที่ให้ข้อมูลปลาทะเลไทยที่กินได้ แนะนำเมนูตามลักษณะเนื้อปลา และตรวจสอบสต็อก/สถานะออเดอร์ครับ"
   },
   {
     "id": "TC-29",
-    "question": "Who was the prime minister of the UK in 1940?",
+    "question": "นายกรัฐมนตรีคนแรกของอังกฤษคือใคร?",
     "category": "CHITCHAT",
     "expected_tools": [],
-    "ground_truth_answer": "Winston Churchill (or direct conversational polite refusal explaining focus is OmniTech support)."
+    "ground_truth_answer": "ตอบคำถามทั่วไปสั้นๆ หรือแจ้งอย่างสุภาพว่าเชี่ยวชาญเฉพาะข้อมูลปลาทะเลไทยและบริการของร้านแมวกินปลา"
   },
   {
     "id": "TC-30",
-    "question": "Good evening, have a good night!",
+    "question": "ราตรีสวัสดิ์ครับ ไว้พรุ่งนี้มาสั่งปลาใหม่นะ!",
     "category": "CHITCHAT",
     "expected_tools": [],
-    "ground_truth_answer": "Good evening! Thank you, have a wonderful night!"
+    "ground_truth_answer": "ราตรีสวัสดิ์ครับ! ขอบคุณที่อุดหนุนประมงพื้นบ้านไทย ไว้พบกันใหม่พรุ่งนี้ครับ"
   }
 ]

@@ -11,18 +11,18 @@ def get_tool_definitions() -> List[Dict[str, Any]]:
             "function": {
                 "name": "search_knowledge_base",
                 "description": (
-                    "Search OmniTech technical documentation, user manuals, warranty policy, "
-                    "refund policy, and shipping guidelines. Note: Since the underlying documentation is in English, "
-                    "formulate your query in concise English keywords (e.g., 'return policy restocking fee opened package', "
-                    "'headphone factory reset', 'battery warranty') for optimal retrieval accuracy. "
-                    "Call this whenever you need factual details, hardware specifications, reset steps, or policy conditions."
+                    "ค้นหาคลังความรู้เกี่ยวกับปลาทะเลไทยที่กินได้ อาหารทะเลพื้นบ้าน ฤดูกาลที่พบ ลักษณะเนื้อปลา "
+                    "เมนูที่เหมาะและไม่เหมาะ (เช่น ซาชิมิ, ฟิชแอนด์ชิป, ลวกจิ้ม, นึ่ง, แกงส้ม, ปลาสำหรับเด็กและผู้สูงอายุ) "
+                    "รวมถึงข้อมูลประมงพื้นบ้านบ้านน้ำเค็ม จ.พังงา มาตรฐานแช่เยือกแข็ง -20°C และสูตรอาหารจาก cateatfish.co/sea/thai-fish "
+                    "ควรใช้คำค้นหาภาษาไทยหรือชื่อปลาที่ตรงประเด็น เช่น 'ปลากะมงพร้าว ฟิชแอนด์ชิป', 'ปลาเก๋าดอกดำ หนังเหนียว ไม่เหมาะทอด', "
+                    "'ปลาเหลืองญี่ปุ่น เด็ก ผู้สูงอายุ', 'ประมงพื้นบ้าน บ้านน้ำเค็ม มอแกลน'"
                 ),
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "query": {
                             "type": "string",
-                            "description": "English keywords or technical search phrase for the knowledge base."
+                            "description": "คำค้นหาเกี่ยวกับชนิดปลาทะเลไทย ลักษณะเนื้อ เมนูอาหาร ฤดูกาล หรือการประมงพื้นบ้าน"
                         }
                     },
                     "required": ["query"]
@@ -34,16 +34,16 @@ def get_tool_definitions() -> List[Dict[str, Any]]:
             "function": {
                 "name": "query_database",
                 "description": (
-                    "Execute a safe, read-only SQL SELECT query over the store SQLite database. "
-                    f"Available Database Tables and Schema:\n{schema_ddl}\n"
-                    "Call this for exact arithmetic, counting orders, inventory lookup, customer orders, or revenue calculations."
+                    "รันคำสั่ง SQL SELECT (แบบอ่านอย่างเดียว) บนฐานข้อมูลร้านแมวกินปลา (SQLite store.db) "
+                    f"โครงสร้างตารางฐานข้อมูล (Schema):\n{schema_ddl}\n"
+                    "ใช้สำหรับตรวจสอบราคาปลาแต่ละชนิด จำนวนสต็อกคงเหลือ ยอดสั่งซื้อของลูกค้า สถานะจัดส่งห้องเย็น หรือรายการเคลมสินค้า"
                 ),
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "sql_query": {
                             "type": "string",
-                            "description": "A single read-only SQL SELECT statement. Never use DROP/INSERT/UPDATE."
+                            "description": "คำสั่ง SQL SELECT แบบอ่านอย่างเดียว ห้ามใช้คำสั่งแก้ไขฐานข้อมูล เช่น DROP/INSERT/UPDATE"
                         }
                     },
                     "required": ["sql_query"]
@@ -55,15 +55,15 @@ def get_tool_definitions() -> List[Dict[str, Any]]:
             "function": {
                 "name": "get_order_status",
                 "description": (
-                    "Fast lookup for an order by order ID (e.g. 'ORD-1001'). Returns order status, customer name, "
-                    "tracking number, and purchased product."
+                    "ค้นหาข้อมูลคำสั่งซื้ออย่างรวดเร็วด้วยรหัสคำสั่งซื้อ (เช่น 'ORD-1001') "
+                    "คืนค่าสถานะจัดส่ง ชื่อลูกค้า รหัสพัสดุรถควบคุมอุณหภูมิ (COOL-...) และรายการปลาที่สั่งซื้อ"
                 ),
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "order_id": {
                             "type": "string",
-                            "description": "The exact Order ID, formatted like ORD-XXXX"
+                            "description": "รหัสคำสั่งซื้อ เช่น ORD-1001"
                         }
                     },
                     "required": ["order_id"]

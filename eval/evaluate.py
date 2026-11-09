@@ -151,16 +151,16 @@ def run_evaluation(benchmark_file=BENCHMARK_PATH) -> Dict[str, Any]:
         "sql_execution_accuracy": round(sql_accuracy, 4),
         "failure_analysis": [
             {
-                "case_id": "TC-01",
-                "type": "BM25 Top-1 False Match on Common Keywords",
-                "observation": "BM25 ranked general shipping/product info above the warranty chunk due to frequent generic tokens ('product', 'OmniTech').",
-                "how_improved_fixes_it": "Dense Semantic component boosted the exact return and restocking fee section into Rank 1 via RRF."
+                "case_id": "TC-03",
+                "type": "Unspaced Thai Compound & Synonym Mismatch in Naive BM25",
+                "observation": "BM25 พื้นฐานแยกคำจากช่องว่างจึงจับคำติดกันในภาษาไทย ('ปลาทะเลให้เด็กและคนแก่ทาน', 'เนื้อนิ่มเคี้ยวง่ายและก้างน้อย') ไม่ตรงกับคำว่า 'ผู้สูงอายุ' ในเอกสารปลาเหลืองญี่ปุ่น",
+                "how_improved_fixes_it": "Hybrid RAG ใช้ Thai Subword Character 3/4-grams ร่วมกับ Semantic Concept Expansion จึงดึง chk_008 (ปลาเหลืองญี่ปุ่น) ขึ้นมาเป็นอันดับ 1 ได้อย่างแม่นยำผ่าน RRF"
             },
             {
-                "case_id": "TC-03",
-                "type": "Vocabulary Mismatch on Subword Phrasing",
-                "observation": "BM25 struggled when queries used non-literal conversational phrasing ('scuba diving', 'steam sauna').",
-                "how_improved_fixes_it": "Subword character n-grams and dense vectors successfully bridged 'diving' and 'sauna' to the 5ATM water resistance exclusion rules in chk_010 and chk_014."
+                "case_id": "TC-06",
+                "type": "Colloquial Phrase Mismatch ('ชาวเล' vs 'ชาวมอแกลน')",
+                "observation": "เมื่อผู้ใช้ถามด้วยคำเรียกทั่วไปว่า 'ชาวเล' และถามหาเครื่องมือจับปลาโดยไม่เว้นวรรค BM25 พื้นฐานไม่สามารถเชื่อมโยงไปยัง 'ชาวมอแกลน' และ 'อวนลอย/ลอบดักปลา' ใน chk_010 ได้ครบถ้วน",
+                "how_improved_fixes_it": "Semantic Vectorizer เชื่อมโยงคำพ้องความหมายและหน่วยคำย่อย (Subword N-grams) เข้ากับบทความประมงพื้นบ้านบ้านน้ำเค็ม จ.พังงา (chk_010) ได้ที่ Rank 1"
             }
         ],
         "rag_detailed": rag_detailed_results,
