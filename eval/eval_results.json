@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-09 23:10:11",
+  "timestamp": "2026-11-09 23:41:07",
   "total_test_samples": 30,
   "categories_breakdown": {
     "RAG (Unstructured Docs)": 10,
@@ -74,11 +74,11 @@
       "bm25_recall@1": 1.0,
       "bm25_recall@5": 1.0,
       "bm25_mrr": 1.0,
-      "hybrid_top_chunk": "chk_001",
+      "hybrid_top_chunk": "chk_012",
       "hybrid_recall@1": 1.0,
       "hybrid_recall@5": 1.0,
       "hybrid_mrr": 1.0,
-      "top_citation": "[grouper_family.md # 1. ปลากะรังจุดฟ้า ปลาเก๋าดอกดำ ปลาเก๋าลิง และปลาเก๋าเพลิง]"
+      "top_citation": "[sustainable_fishery_and_recipes.md # 3. สรุปการเลือกปลาทะเลไทยตามประเภทเมนูและสูตรอาหารแนะนำ]"
     },
     {
       "id": "TC-03",

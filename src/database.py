@@ -23,22 +23,23 @@ def get_schema_prompt() -> str:
     return "\n\n".join(tables_sql)
 
 def clean_sql(text: str) -> str:
-    """Strip markdown ```sql fences and any trailing semicolon."""
+    """
+    Strip markdown ```sql fences, stray backticks, leading 'sql',
+    and any trailing semicolon as taught in Lecture 11 §8.2.
+    """
     if not isinstance(text, str):
         return ""
-    s = text.strip()
-    if s.startswith("```"):
-        s = re.sub(r"^```(?:sql)?\s*", "", s, flags=re.IGNORECASE)
-        s = re.sub(r"\s*```$", "", s)
-    s = s.strip()
-    # Strip trailing semicolon if present
-    if s.endswith(";"):
-        s = s[:-1].strip()
+    s = text.strip().strip("`")
+    s = re.sub(r"^```(?:sql)?\s*", "", s, flags=re.IGNORECASE)
+    s = re.sub(r"\s*```$", "", s)
+    s = re.sub(r"^sql\b", "", s, flags=re.IGNORECASE).strip()
+    s = s.rstrip(";").strip()
     return s
 
 def guard_sql(sql: str) -> Tuple[bool, str]:
     """
     Guards SQL query against writes, injections, stacked queries, and comments (Lecture 11 & HW6).
+    Supports SELECT and read-only CTEs (WITH ... SELECT) while blocking modifying statements.
     Returns (is_safe: bool, reason_or_cleaned_sql: str).
     """
     cleaned = clean_sql(sql)
@@ -49,8 +50,8 @@ def guard_sql(sql: str) -> Tuple[bool, str]:
     if "--" in cleaned or "/*" in cleaned or "*/" in cleaned:
         return False, "Security Error: SQL comments are not permitted."
 
-    # 2. Must start with SELECT (case-insensitive)
-    if not re.match(r"(?is)^\s*SELECT\b", cleaned):
+    # 2. Must start with SELECT or WITH (Lecture 11 §6 CTE caveat)
+    if not re.match(r"(?is)^\s*(SELECT|WITH)\b", cleaned):
         return False, "Security Error: Query must start with a SELECT statement."
 
     # 3. Reject embedded ';' (stacked statements)

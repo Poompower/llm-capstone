@@ -40,6 +40,21 @@ class TestCatEatFishCapstone(unittest.TestCase):
         self.assertTrue(is_safe)
         self.assertIn("LIMIT 100", sql)
 
+    def test_lecture_11_hostile_probes(self):
+        """Verifies the exact 7 hostile probes from Lecture 11 §8.2."""
+        probes = [
+            ("SELECT region, SUM(units) FROM orders GROUP BY region", True),
+            ("DROP TABLE customers", False),
+            ("SELECT 1; DROP TABLE customers", False),
+            ("SELECT * FROM orders; PRAGMA writable_schema=ON", False),
+            ("select * from orders -- DROP TABLE x", False),
+            ("PRAGMA table_info(orders)", False),
+            ("ATTACH DATABASE 'evil.db' AS e", False),
+        ]
+        for query, expected_pass in probes:
+            is_safe, _ = guard_sql(query)
+            self.assertEqual(is_safe, expected_pass, f"Probe failed: {query}")
+
     def test_database_execution(self):
         res = execute_guarded_sql("SELECT COUNT(*) AS total FROM products")
         self.assertTrue(res.get("success"))
