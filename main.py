@@ -1,12 +1,10 @@
-import os
-import time
 from typing import List, Optional, Dict, Any
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from src.config import MODEL_NAME, get_openai_client_and_base
+from src.config import MODEL_NAME
 from src.agent import run_agent_turn
 from src.rag import get_rag_system
 from src.database import get_db_connection
