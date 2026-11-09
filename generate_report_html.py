@@ -93,7 +93,7 @@ def create_report_html():
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>OmniTech AI — Capstone Project Report</title>
+  <title>CatEatFish AI (แมวกินปลา) — Capstone Project Report</title>
   <style>
     @page {{
       size: A4;

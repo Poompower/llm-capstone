@@ -1,1 +1,1 @@
-# OmniTech AI Package
+# CatEatFish AI Package

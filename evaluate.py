@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Root runner for OmniTech AI Capstone Evaluation.
+Root runner for CatEatFish AI (แมวกินปลา) Capstone Evaluation.
 Usage:
     python evaluate.py
 """

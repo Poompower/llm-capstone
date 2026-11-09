@@ -176,7 +176,7 @@ def run_evaluation(benchmark_file=BENCHMARK_PATH) -> Dict[str, Any]:
 
 def print_evaluation_report(results: Dict[str, Any]):
     print("=" * 82)
-    print("       OMNITECH AI CAPSTONE - QUANTITATIVE EVALUATION BENCHMARK")
+    print("       CATEATFISH AI (แมวกินปลา) - QUANTITATIVE EVALUATION BENCHMARK")
     print("=" * 82)
     print(f"Timestamp: {results['timestamp']}")
     print(f"Total Test Set Samples: {results['total_test_samples']}")

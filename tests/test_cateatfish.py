@@ -9,7 +9,7 @@ from src.rag import get_rag_system
 from src.tools import get_tool_definitions, dispatch_tool
 from eval.evaluate import run_evaluation
 
-class TestOmniTechCapstone(unittest.TestCase):
+class TestCatEatFishCapstone(unittest.TestCase):
 
     def test_sql_guard_clean_sql(self):
         # Strip ```sql code fences and trailing semicolons
